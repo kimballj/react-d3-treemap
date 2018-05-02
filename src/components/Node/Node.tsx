@@ -136,25 +136,12 @@ class Node extends React.Component<INodeProps, {}> {
             hideValue
          } = this.props;
 
-        if (hasChildren === true) {
-            const fullLabel = hideValue ? label : label + "\xa0(" + valueWithFormat + " " + valueUnit + ")";
-            return (
-                <tspan fontSize={fontSize} fill={textColor} dx={4} dy={fontSize} >
-                    {fullLabel}
-                </tspan>
-            );
-        } else {
-            if (label) {
-                const fullLabel = hideValue ? label.split(/(?=[A-Z][^A-Z])/g) : label.split(/(?=[A-Z][^A-Z])/g).concat("(" + valueWithFormat + " " + valueUnit + ")");
-                return fullLabel.map((item, index) => {
-                    return (
-                        <tspan fontSize={fontSize} fill={textColor} key={index} x={4} dy={fontSize} >
-                            {item}
-                        </tspan>
-                    );
-                });
-            }
-        }
+        const fullLabel = hideValue ? label : label + "\xa0(" + valueWithFormat + " " + valueUnit + ")";
+        return (
+            <tspan fontSize={fontSize} fill={textColor} dx={4} dy={fontSize} >
+                {fullLabel}
+            </tspan>
+        );
     }
 }
 
